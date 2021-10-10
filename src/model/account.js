@@ -16,6 +16,12 @@ class Account {
     getTransactions=()=>{
         return this.transactions;
     };
+
+    takeOut=(amount)=>{
+        this.balance-=amount;
+        this.transactions.push(amount);
+        return this.balance;
+    };
 };
 
 export { Account };

@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 import { getNewCashBox } from './cashBoxHandler.js';
 import { ATMConfig } from "../config/atm-config.js";
-import { getRandomAmount, getRandomNote } from '../utils/utils.js';
 
 describe('The main test cases of the cash box handler.', ()=> {
 
