@@ -16,10 +16,10 @@ class CashBox {
     getNumberOfNotes=(amount,note)=>{
         if(note.v<=0) throw Error('Using an incorrect note value. Reset the cash box.');
         let non=parseInt(amount/note.v);// number of notes
-        return ((note.a!==Infinity && non>note.a)?(note.a):(non));
+        return ((note.a!==Infinity && note.a<non)?(note.a):(non));
     };
     
-    getTotalCash=()=>{
+    getTotalCashAvailable=()=>{
         let availableNotes=this.getAvailableNotes();
         let total=0;
         availableNotes.forEach((avn)=>{
@@ -28,15 +28,15 @@ class CashBox {
         return total;
     };
     
-    getCashByAmount=(amount)=>{
+    getNotesForAmount=(amount)=>{
         let availableNotes=this.getAvailableNotes();
         let outputCash=[];
         availableNotes.forEach((avn)=>{
-            let l=this.getNumberOfNotes(amount,avn);
-            amount=(l)?(amount-l*avn.v):(amount);
+            let non=this.getNumberOfNotes(amount,avn);
+            amount=(non)?(amount-non*avn.v):(amount);
             outputCash.push({
                 v:avn.v,
-                l:l
+                a:non
             });
         });
         if(amount>0) throw Error('The value does not match the available notes.');

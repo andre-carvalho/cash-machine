@@ -13,22 +13,24 @@ describe('The main test cases of the ATM configuration.', ()=> {
     describe('Get the available notes from configuration file.', ()=> {
 
         it('should return an ordered list of available notes from highest to lowest using note values.', async ()=> {
-            let clonedAvailableNotes=JSON.parse(JSON.stringify(ATMConfig.cashBox.availableNotes));
-            clonedAvailableNotes.sort((a,b)=>{return a.v - b.v});
-
+            let clonedAvailableNotes=[];
+            ATMConfig.cashBox.availableNotes.forEach((avn)=>{
+                clonedAvailableNotes.push({v:avn.v,a:avn.a});
+            });
+            clonedAvailableNotes.sort((a,b)=>{return b.v - a.v});
             expect( clonedAvailableNotes ).to.be.eql(ATMConfig.cashBox.availableNotes);
         });
 
-        it('should return a note of 100 in the list of available notes.', async ()=> {
+        it('should return a note of 100 in the first position in the list of available notes.', async ()=> {
             expect( ATMConfig.cashBox.availableNotes[0].v ).to.be.eql(100);
         });
-        it('should return a note of 50 in the list of available notes.', async ()=> {
+        it('should return a note of 50 in the second position in the list of available notes.', async ()=> {
             expect( ATMConfig.cashBox.availableNotes[1].v ).to.be.eql(50);
         });
-        it('should return a note of 20 in the list of available notes.', async ()=> {
+        it('should return a note of 20 in the third position in the list of available notes.', async ()=> {
             expect( ATMConfig.cashBox.availableNotes[2].v ).to.be.eql(20);
         });
-        it('should return a note of 10 in the list of available notes.', async ()=> {
+        it('should return a note of 10 in the fourth position in the list of available notes.', async ()=> {
             expect( ATMConfig.cashBox.availableNotes[3].v ).to.be.eql(10);
         });
 

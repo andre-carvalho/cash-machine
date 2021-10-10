@@ -1,6 +1,6 @@
 /**
  * To generate random integer number between min and max values
- * Using in tests to simulate the requested amount of cash
+ * using in tests to simulate the requested amount of cash
  * 
  * @param {integer} min, the limit for the minimum output value
  * @param {integer} max, the limit for the maximum output value
