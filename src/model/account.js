@@ -18,6 +18,7 @@ class Account {
     };
 
     takeOut=(amount)=>{
+        if(amount>this.balance) throw Error('This amount exceeds the account balance.');
         this.balance-=amount;
         this.transactions.push(amount);
         return this.balance;

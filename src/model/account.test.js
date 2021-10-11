@@ -23,4 +23,14 @@ describe('The main test cases of the account:', ()=> {
             expect( account.getTransactions()[0] ).to.be.eql(amount);
         });
     });
+
+    describe('Behavior with unexpected input values:', ()=> {
+
+        const account=new Account();
+        let amount=account.getBalance()+100;// force an amount greater than the account balance
+
+        it('must throw an exception when some amount is greater than the account balance.', async ()=> {
+            expect( ()=>{account.takeOut(amount)} ).to.throw('This amount exceeds the account balance.');
+        });    
+    });
 });
