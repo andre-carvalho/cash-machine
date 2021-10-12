@@ -8,22 +8,32 @@ dotenv.config({ silent: true });
  */
 const openConnection=async ()=>{
 
-    let credentials="";
+    let opts={
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 200
+    };
+
+    let credentials={};
     if(process.env.MONGO_USER && process.env.MONGO_PASS){
-        credentials=process.env.MONGO_USER+":"+process.env.MONGO_PASS+"@";
+        credentials={
+            authSource: process.env.MONGO_USER,
+            user: process.env.MONGO_USER,
+            pass: process.env.MONGO_PASS
+        };
     }
+
     const uri="mongodb://"+
-        credentials+
         process.env.MONGO_HOST+":"+
         process.env.MONGO_PORT+"/"+
         process.env.MONGO_DB;
 
-    const opts = {useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 200 };
-    try {
-        return mongoose.connect(uri, opts);
-    } catch (err) {
-        return console.log("connection error:" + err.reason);
-    }
+    return mongoose.connect(uri, Object.assign(opts,credentials)).catch(
+        (error)=>{
+            console.log("connection error:" + error);
+        }
+    );
+
 };
 
 /**
