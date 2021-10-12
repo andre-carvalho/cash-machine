@@ -7,6 +7,6 @@ const AccountSchema = new mongoose.Schema({
 });
 
 // Compile model from schema
-const AccountModel = mongoose.model('Account', AccountSchema );
+const AccountModel = mongoose.models['Account'] || mongoose.model('Account', AccountSchema );
 
 export { AccountModel };

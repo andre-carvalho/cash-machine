@@ -23,6 +23,13 @@ class Account {
         this.transactions.push(amount);
         return this.balance;
     };
+
+    simplify=()=>{
+        return {
+            "balance":this.getBalance(),
+            "transactions":this.getTransactions()
+        };
+    };
 };
 
 export { Account };

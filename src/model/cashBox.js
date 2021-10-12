@@ -33,6 +33,7 @@ class CashBox {
         let outputCash=[];
         availableNotes.forEach((avn)=>{
             let non=this.getNumberOfNotes(amount,avn);
+            avn.a=avn.a-non;// remove take out notes from cash box
             amount=(non)?(amount-non*avn.v):(amount);
             outputCash.push({
                 v:avn.v,
@@ -42,13 +43,12 @@ class CashBox {
         if(amount>0) throw Error('The value does not match the available notes.');
         return outputCash;
     };
+
+    simplify=()=>{
+        return {
+            "availableNotes":this.getAvailableNotes()
+        };
+    };
 };
 
-class Note{
-    constructor(value,amount){
-        this.v=value;
-        this.a=amount;
-    }
-};
-
-export { CashBox, Note };
+export { CashBox };
