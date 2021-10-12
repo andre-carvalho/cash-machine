@@ -10,6 +10,7 @@ var api = "/cashmachine/v1";
 app.use( api+"/account", accountRouter);
 app.use( api+"/cashbox", cashBoxRouter);
 
+app.use('/client', express.static('./src/client'));
 
 app.listen(process.env.API_LISTEN_PORT, () => {
     console.log("The cash machine API is listening on the port: "+process.env.API_LISTEN_PORT);

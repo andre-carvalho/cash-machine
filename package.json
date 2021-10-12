@@ -2,13 +2,13 @@
   "name": "cash-machine",
   "version": "1.0.0",
   "description": "A simple ATM API simulation using TDD and Node.js",
-  "main": "src/api.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "test:debug": "nyc mocha ./src/**/*test.js --recursive",
     "test": "NODE_ENV=test nyc mocha ./src/**/*test.js --recursive",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls -v",
-    "start": "nodemon ./src/api.js"
+    "start": "nodemon ./src/server.js"
   },
   "author": "andre-carvalho",
   "license": "ISC",

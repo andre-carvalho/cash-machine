@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+	<meta http-equiv='expires' content='0'>
+	<meta http-equiv='pragma' content='no-cache'>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="André Carvalho - afacarvalho@yahoo.com.br">
+    <title>A simple client to test the ATM API</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-6">
+			<h3 class="text-center">
+				Cash Machine 24H
+			</h3>
+			<div class="row">
+				<div class="col-md-4 controls">
+					 
+					<button id="balance-btn" type="button" class="btn btn-success">
+						Account balance
+					</button> 
+					<button id="extract-btn" type="button" class="btn btn-success">
+						Account extract
+					</button> 
+					<button id="takeout-btn" type="button" class="btn btn-success">
+						Take out cash
+					</button>
+				</div>
+				<div class="col-md-8 mainspace">
+					<form role="form" class="takeout-form form-inline">
+						<div class="form-group">
+							<label for="amount">
+								Amount
+							</label>
+							<input type="number" class="form-control" id="amount">
+						</div>
+						<button type="submit" class="btn btn-primary">
+							confirm
+						</button>
+					</form>
+                    <div class="alert alert-dismissable alert-default">
+						<h4 id="op-title">
+							Balance
+						</h4>
+                        <span id="op-content">10000</span>
+					</div>
+					<div class="alert alert-dismissable alert-success">
+						<h4 id="op-title">
+							Balance
+						</h4>
+                        <span id="op-content">10000</span>
+					</div>
+				</div>
+			</div>
+			<blockquote class="blockquote">
+				<p class="mb-0">
+					An ATM simulation based on an API written in Node.js and MongoDB
+				</p>
+				<footer class="blockquote-footer">
+					<a href="https://github.com/andre-carvalho/cash-machine">Fork me on GitHub</a>
+				</footer>
+			</blockquote>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/start-client.js"></script>
+    <script src="js/cash-machine-api-client.js"></script>
+  </body>
+</html>
