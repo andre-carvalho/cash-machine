@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "678405aa-40da-4a91-b314-efcd4121d15d",
+		"name": "CashMachineAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cash box reset",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/cashbox/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"cashbox",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CashBox available notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/cashbox/available/notes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"cashbox",
+						"available",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take out from Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/account/takeout/260",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"account",
+						"takeout",
+						"260"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account extract",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/account/extract",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"account",
+						"extract"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/account/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"account",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account reset",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/cashmachine/v1/account/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cashmachine",
+						"v1",
+						"account",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
