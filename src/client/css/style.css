@@ -3,11 +3,15 @@
     justify-content: space-around;
     align-content: space-evenly;
 }
-.mainspace{
+.takeoutmain{
     min-height: 350px;
     display: inline-grid;
     align-content: space-evenly;
 }
 .takeout-form{
     display: none;
+}
+#balance-form{
+    max-height: 250px;
+    overflow-y: auto;
 }

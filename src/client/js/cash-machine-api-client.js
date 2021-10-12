@@ -31,19 +31,20 @@ var account={
         api.call(this.path+"/takeout/"+amount,fn);
     },
 
-    reset:function(){
-        api.call(this.path+"/reset",fn);
+    reset:function(fn){
+        api.call(this.path+"/reset",fn,'PUT');
     }
 
 };
 
 var cashBox={
+    path:"/cashbox",
 
-    getAvailableNotes:function(){
-
+    getAvailableNotes:function(fn){
+        api.call(this.path+"/available/notes",fn);
     },
 
-    reset:function(){
-
+    reset:function(fn){
+        api.call(this.path+"/reset",fn,'PUT');
     }
 };

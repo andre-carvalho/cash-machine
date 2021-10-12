@@ -37,30 +37,36 @@
 					<button id="takeout-btn" type="button" class="btn btn-success">
 						Take out cash
 					</button>
+                    <button id="account-reset-btn" type="button" class="btn btn-danger">
+						Account reset
+					</button>
+                    <button id="cashbox-reset-btn" type="button" class="btn btn-danger">
+						Cash box reset
+					</button>
 				</div>
-				<div class="col-md-8 mainspace">
-					<form role="form" class="takeout-form form-inline">
+				<div class="col-md-8 takeoutmain">
+					<div id="takeout-form" style="display: none;" class="form-inline">
 						<div class="form-group">
 							<label for="amount">
 								Amount
 							</label>
 							<input type="number" class="form-control" id="amount">
 						</div>
-						<button type="submit" class="btn btn-primary">
+						<button id="confirm-btn" class="btn btn-primary">
 							confirm
 						</button>
-					</form>
-                    <div class="alert alert-dismissable alert-default">
-						<h4 id="op-title">
-							Balance
-						</h4>
-                        <span id="op-content">10000</span>
 					</div>
-					<div class="alert alert-dismissable alert-success">
+                    <div id="balance-form" class="alert alert-dismissable alert-default">
 						<h4 id="op-title">
 							Balance
 						</h4>
-                        <span id="op-content">10000</span>
+                        <span id="op-content"></span>
+					</div>
+					<div class="alert alert-dismissable alert-info">
+						<h4 id="op-title">
+							Available notes
+						</h4>
+                        <span id="op-notes"></span>
 					</div>
 				</div>
 			</div>
