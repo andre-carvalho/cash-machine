@@ -2,7 +2,7 @@
   "name": "cash-machine",
   "version": "1.0.0",
   "description": "A simple ATM API simulation using TDD and Node.js",
-  "main": "index.js",
+  "main": "src/api.js",
   "type": "module",
   "scripts": {
     "test:debug": "nyc mocha ./src/**/*test.js --recursive",
