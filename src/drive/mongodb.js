@@ -8,7 +8,10 @@ dotenv.config({ silent: true });
  */
 const openConnection=async ()=>{
 
-    const credentials="";//process.env.MONGO_USER+":"+process.env.MONGO_PASS+"@";
+    let credentials="";
+    if(process.env.MONGO_USER && process.env.MONGO_PASS){
+        credentials=process.env.MONGO_USER+":"+process.env.MONGO_PASS+"@";
+    }
     const uri="mongodb://"+
         credentials+
         process.env.MONGO_HOST+":"+
