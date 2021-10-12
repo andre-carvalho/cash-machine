@@ -1,6 +1,6 @@
-import { getCashBox, createCashBox } from '../model/cashBox.dao.js'
+import { closeConnection } from '../drive/mongodb.js';
+import { getCashBox, createCashBox, updateCashBox } from '../model/cashBox.dao.js'
 import { CashBox } from '../model/cashBox.js';
-
 
 const getDefaultCashBox=async ()=>{
     let cashBox=await getCashBox();
@@ -11,4 +11,19 @@ const getDefaultCashBox=async ()=>{
     return cashBox;
 };
 
-export{ getDefaultCashBox };
+const getAvailableNotes=async ()=>{
+    const cashBox=await getDefaultCashBox();
+    closeConnection();
+    return {availableNotes:cashBox.getAvailableNotes()};
+};
+
+const resetCashBox=async ()=>{
+    const cashBox=await updateCashBox(new CashBox());
+    closeConnection();
+    if(!cashBox) {
+        return { error: 'cash box reset failed' };
+    }
+    return cashBox;
+};
+
+export{ getDefaultCashBox, getAvailableNotes, resetCashBox };

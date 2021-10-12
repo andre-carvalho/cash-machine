@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { openConnection } from '../drive/mongodb.js';
 import { CashBoxModel } from './cashBox.model.js';
 import { CashBox } from '../model/cashBox.js';
+import dotenv from 'dotenv';
+dotenv.config({ silent: true });
 
 // fixing an identifier to keep a single document on Mongo
 const CASHBOX_ID="single_cash_box";
@@ -31,10 +33,10 @@ const getCashBox = async ()=>{
     .then((aCashBox)=>{
         cashbox = new CashBox(aCashBox.availableNotes);
     },(reason)=>{
-        console.log("Failure on getCashBox:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on getCashBox:"+JSON.stringify(reason));
     })
     .catch((error)=>{
-        console.log("Exception on getCashBox:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on getCashBox:"+JSON.stringify(error));
     });
     return cashbox;
 };
@@ -53,13 +55,13 @@ const createCashBox = async (cashBox=new CashBox())=>{
     const aCashBoxModel=createCashBoxModel(cashBox);
     await aCashBoxModel.save()
     .then(()=>{
-        console.log("createCashBox ok!");
+        if(process.env.NODE_ENV!='test') console.log("createCashBox ok!");
     },(reason)=>{
-        console.log("Failure on createCashBox:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on createCashBox:"+JSON.stringify(reason));
         cashBox=null;
     })
     .catch((error)=>{
-        console.log("Exception on createCashBox:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on createCashBox:"+JSON.stringify(error));
         cashBox=null;
     });
     return cashBox;
@@ -78,13 +80,13 @@ const updateCashBox = async (cashBox)=>{
 
     await CashBoxModel.updateOne({ _id: CASHBOX_ID }, cashBox.simplify())
     .then(()=>{
-        console.log("updateCashBox ok!");
+        if(process.env.NODE_ENV!='test') console.log("updateCashBox ok!");
     },(reason)=>{
-        console.log("Failure on updateCashBox:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on updateCashBox:"+JSON.stringify(reason));
         cashBox=null;
     })
     .catch((error)=>{
-        console.log("Exception on updateCashBox:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on updateCashBox:"+JSON.stringify(error));
         cashBox=null;
     });
     return cashBox;

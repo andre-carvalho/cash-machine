@@ -2,7 +2,7 @@
  * Routers for account 
  */
 import { Router } from 'express';
-import { getBalance, getTransactions, takeOut } from '../services/accountHandler.js'
+import { getBalance, getTransactions, resetAccount, takeOut } from '../services/accountHandler.js'
 
 const accountRouter = Router();
 
@@ -26,8 +26,21 @@ accountRouter.get("/extract",
 accountRouter.get("/takeout/:amount",
     async (req, res) => {
         const { amount } = req.params;
-        const data = await takeOut(amount);
-        res.json(data);
+        let val=parseInt(amount);
+        if (isNaN(val) || !Number.isInteger(val)) {
+            res.status(400).json({ error: 'amount should be numeric' });
+        }else{
+            const data = await takeOut(amount);
+            res.json(data);
+        }
+    }
+);
+
+/* PUT account reset */
+accountRouter.put("/reset",
+    async (req, res) => {
+        await resetAccount();
+        res.status(202).json({ msg: 'the account has been reset to defaults' });
     }
 );
 

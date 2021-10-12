@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { openConnection } from '../drive/mongodb.js';
 import { AccountModel } from './account.model.js';
 import { Account } from './account.js';
+import dotenv from 'dotenv';
+dotenv.config({ silent: true });
 
 // fixing an identifier to keep a single document on Mongo
 const ACCOUNT_ID="single_account";
@@ -31,10 +33,10 @@ const getAccount = async ()=>{
     .then((anAccount)=>{
         account = new Account(anAccount.balance,anAccount.transactions);
     },(reason)=>{
-        console.log("Failure on getAccount:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on getAccount:"+JSON.stringify(reason));
     })
     .catch((error)=>{
-        console.log("Exception on getAccount:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on getAccount:"+JSON.stringify(error));
     });
     return account;
 };
@@ -55,13 +57,13 @@ const createAccount = async (account=new Account())=>{
     const anAccount=createModelAccount(account);
     await anAccount.save()
     .then(()=>{
-        console.log("createAccount ok!")
+        if(process.env.NODE_ENV!='test') console.log("createAccount ok!")
     },(reason)=>{
-        console.log("Failure on createAccount:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on createAccount:"+JSON.stringify(reason));
         account=null;
     })
     .catch((error)=>{
-        console.log("Exception on createAccount:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on createAccount:"+JSON.stringify(error));
         account=null;
     });
     return account;
@@ -80,13 +82,13 @@ const updateAccount = async (account)=>{
 
     await AccountModel.updateOne({ _id: ACCOUNT_ID }, account.simplify())
     .then(()=>{
-        console.log("updateAccount ok!");
+        if(process.env.NODE_ENV!='test') console.log("updateAccount ok!");
     },(reason)=>{
-        console.log("Failure on updateAccount:"+JSON.stringify(reason));
+        if(process.env.NODE_ENV!='test') console.log("Failure on updateAccount:"+JSON.stringify(reason));
         account=null;
     })
     .catch((error)=>{
-        console.log("Exception on updateAccount:"+JSON.stringify(error));
+        if(process.env.NODE_ENV!='test') console.log("Exception on updateAccount:"+JSON.stringify(error));
         account=null;
     });
     return account;

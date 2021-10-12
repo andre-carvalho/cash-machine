@@ -34,7 +34,7 @@ const takeOut=async (amount)=>{
         notes=cashBox.getNotesForAmount(amount);
     } catch (error) {
         closeConnection();
-        return { error: error };
+        return { error: error.message };
     }
     await updateAccount(account);
     await updateCashBox(cashBox);
@@ -43,4 +43,13 @@ const takeOut=async (amount)=>{
     return {balance:balance,notes:notes};
 };
 
-export { getDefaultAccount, getBalance, getTransactions, takeOut };
+const resetAccount=async ()=>{
+    const aAccount=await updateAccount(new Account());
+    closeConnection();
+    if(!aAccount) {
+        return { error: 'account reset failed' };
+    }
+    return aAccount;
+};
+
+export { getDefaultAccount, getBalance, getTransactions, takeOut, resetAccount };
