@@ -3,7 +3,7 @@ var api={
 
     call:function(path,fn,method){
         if(!method) method='GET';
-        $.ajax( {url: this.baseUrl+path,type: method} )
+        $.ajax( {cache: false, url: this.baseUrl+path,type: method} )
             .done(function(response) {
                 fn(response)
             })
