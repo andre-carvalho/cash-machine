@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { ATMConfig } from '../config/atm-config.js';
 import { getDefaultAccount, getBalance, getTransactions, takeOut, resetAccount } from './accountHandler.js';
 import { Account } from '../model/account.js';
+import { closeConnection } from '../drive/mongodb.js';
 
 describe('The main test cases of the account handler:', ()=> {
 
@@ -41,5 +42,9 @@ describe('The main test cases of the account handler:', ()=> {
             expect( newAccount.getBalance() ).to.be.eql(ATMConfig.account.customerBalance);
             expect( newAccount.getTransactions().length ).to.be.eql(0);
         });
+    });
+
+    after(async ()=>{
+        await closeConnection();
     });
 });

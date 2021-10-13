@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { ATMConfig } from '../config/atm-config.js';
 import { getDefaultCashBox, getAvailableNotes, resetCashBox } from './cashBoxHandler.js';
 import { CashBox } from '../model/cashBox.js'
+import { closeConnection } from '../drive/mongodb.js';
 
 describe('The main test cases of the cash box handler.', () => {
 
@@ -28,6 +29,10 @@ describe('The main test cases of the cash box handler.', () => {
       const newCashBox = await resetCashBox();
       expect(newCashBox.getAvailableNotes()).to.be.eql(ATMConfig.cashBox.availableNotes);
     });
+  });
+
+  after(async ()=>{
+    await closeConnection();
   });
 
 });
