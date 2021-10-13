@@ -42,7 +42,8 @@ const openConnection=async ()=>{
  * @returns a Promise to close connection
  */
 const closeConnection=()=>{
-    if(mongoose.connection.readyState === 1) return mongoose.connection.close();
+    if(mongoose.connection.readyState === 1 && process.env.NODE_ENV!='test')
+        return mongoose.disconnect();
 };
 
 export { openConnection, closeConnection };
