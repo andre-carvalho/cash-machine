@@ -3,4 +3,11 @@ node_js:
   - v12
 notifications:
   email: false
+services:
+  - mongodb
+env:
+  - NODE_ENV="test"
+  - MONGO_HOST="localhost"
+  - MONGO_PORT="27017"
+  - MONGO_DB="cash_machine"
 after_success: npm run coverage
