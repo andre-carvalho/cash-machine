@@ -1,8 +1,9 @@
 /**
  * Routers for account 
  */
-import { Router } from 'express';
 import { getAvailableNotes, resetCashBox } from '../services/cashBoxHandler.js'
+import pkg from 'express';
+const { Router } = pkg;
  
 const cashBoxRouter = Router();
  

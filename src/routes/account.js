@@ -1,8 +1,9 @@
 /**
  * Routers for account 
  */
-import { Router } from 'express';
 import { getBalance, getTransactions, resetAccount, takeOut } from '../services/accountHandler.js'
+import pkg from 'express';
+const { Router } = pkg;
 
 const accountRouter = Router();
 

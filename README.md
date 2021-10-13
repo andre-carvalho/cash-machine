@@ -39,7 +39,7 @@ Documents will be created in the datastore after the first call from the client 
 
  > prerequisites in the development environment:
 
-- node version v14.18.0
+- node version v12.18.2
 - npm version  6.14.15
 - mongodb version 5.0
 
