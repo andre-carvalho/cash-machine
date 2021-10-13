@@ -1,7 +1,7 @@
 {
   "name": "cash-machine",
   "version": "1.0.0",
-  "description": "A simple ATM API simulation using TDD and Node.js",
+  "description": "A simple ATM API simulation using TDD, Node.js and MongoDB",
   "main": "src/server.js",
   "type": "module",
   "scripts": {
